@@ -1,0 +1,4 @@
+20 7 * * * /anaconda3/bin/python scrape_bus_data.py
+35 8 * * * /anaconda3/bin/python scrape_bus_data.py
+10 14 * * * /anaconda3/bin/python scrape_bus_data.py
+25 15 * * * /anaconda3/bin/python scrape_bus_data.py
