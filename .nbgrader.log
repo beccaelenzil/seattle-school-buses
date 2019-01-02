@@ -1,0 +1,11 @@
+[NotebookApp | WARNING] No nbgrader_config.py file found (rerun with --debug to see where nbgrader is looking)
+[NotebookApp | INFO] Loading the validate_assignment nbgrader serverextension
+[NotebookApp | INFO] Serving notebooks from local directory: /Users/becca.elenzil/GitHub/seattle-school-buses
+[NotebookApp | INFO] 0 active kernels 
+[NotebookApp | INFO] The Jupyter Notebook is running at: http://127.0.0.1:8891/?token=be296377bf2ab65f3d7c5840c7c685d12c44b7ea5fa3ac06
+[NotebookApp | INFO] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[NotebookApp | CRITICAL] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://127.0.0.1:8891/?token=be296377bf2ab65f3d7c5840c7c685d12c44b7ea5fa3ac06

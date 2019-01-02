@@ -7,8 +7,7 @@ import os
 import datetime
 
 now = datetime.datetime.now()
-
-
+ 
 # web scraping
 late_busses = 'https://www.seattleschools.org/departments/transportation/latebus'
 page = urllib.urlopen(late_busses)
@@ -61,8 +60,11 @@ unit_list = []
 month_list = []
 day_list = []
 year_list = []
-today_list = []
-today_time_list = []
+today_month = []
+today_day = []
+today_year = []
+today_hour = []
+today_minute = []
 
 
 for list_item in new_bus_array:
@@ -90,25 +92,36 @@ for list_item in new_bus_array:
     month_list.append(the_month)
     day_list.append(the_day)
     year_list.append(the_year)
-    today_list.append([now.month,now.day,now.year])
-    today_time_list.append([now.hour,now.minute])
+    today_month.append(now.month)
+    today_day.append(now.day)
+    today_year.append(now.year)
+    today_hour.append(now.hour)
+    today_minute.append(now.minute)
 
 
 # write to data frame and save
 BusDataSet = list(zip(month_list,day_list,year_list,bus_number_list,school_list,
-                      to_from_list, time_list, unit_list,today_list,today_time_list))
+                      to_from_list, time_list, unit_list,today_month,today_day, today_year, today_hour, today_minute))
 
 dirname = os.path.dirname(__file__)
 filename = os.path.join(dirname, 'bus_data.pk1')
+filename_csv = os.path.join(dirname, 'bus_data.csv')
 
 df = pd.read_pickle(filename)
+num_rows = df['Month'].count()
+
+
 
 df2 = pd.DataFrame(data = BusDataSet, columns=['Month', 'Day','Year',
                                               'Bus Number','School',
-                                              'To/From','Time','Unit','Today Date','Today Time'])
-df3 = df.append(df2,ignore_index=True)
+                                                'To/From','Time','Unit','Data Taken Month','Data Taken Day',
+                                               'Data Taken Year','Data Taken Hour','Data Taken Minute'])
+if df['Day'][num_rows-1] == df2['Day'][0] and df['Data Taken Hour'][num_rows-1] >= 15:
+    print("old data")
+else:
+    df3 = df.append(df2,ignore_index=True)
+    df3.to_pickle(filename)
+    df3.to_csv(filename_csv)
 
-df3.to_pickle(filename)
-
-
-
+#/Users/becca.elenzil/Documents/personal_projects/scrape_bus_data.py
+#/Users/becca.elenzil/GitHub/seattle-school-buses/scraping_bus_data/scrape_bus_data.py
