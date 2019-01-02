@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c10b349-6a4b-45b9-8329-237af428b6e5" name="Default" comment="" />
+    <list default="true" id="2c10b349-6a4b-45b9-8329-237af428b6e5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="seattle-school-buses.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,7 +48,7 @@
         <entry file="file://$PROJECT_DIR$/scrape_bus_data.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1778">
-              <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+              <caret line="5" column="9" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -410,7 +412,7 @@
     <entry file="file://$PROJECT_DIR$/scrape_bus_data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1778">
-          <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+          <caret line="5" column="9" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="9" />
           <folding />
         </state>
       </provider>
