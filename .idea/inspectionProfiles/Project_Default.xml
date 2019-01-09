@@ -23,7 +23,6 @@
           <option value="E501" />
           <option value="W29" />
           <option value="E501" />
-<<<<<<< HEAD
           <option value="W29" />
           <option value="E501" />
           <option value="W29" />
@@ -32,8 +31,6 @@
           <option value="E501" />
           <option value="W29" />
           <option value="E501" />
-=======
->>>>>>> parent of bcf834a... cronjob testing
         </list>
       </option>
     </inspection_tool>

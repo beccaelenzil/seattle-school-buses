@@ -14,6 +14,8 @@ page = urllib.urlopen(late_busses)
 soup = BeautifulSoup(page, "html.parser")
 
 # get bus list and date from html
+t = soup.find_all('p')
+print(t)
 [a, bus_list, b] = soup.find_all('p')
 [a,date] = soup.find_all('h3')
 
@@ -65,6 +67,8 @@ today_day = []
 today_year = []
 today_hour = []
 today_minute = []
+
+print(new_bus_array)
 
 
 for list_item in new_bus_array:
