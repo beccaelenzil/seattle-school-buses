@@ -123,7 +123,7 @@ else:
     df3.to_pickle(filename)
     df3.to_csv(filename_csv)
 
-#print("day list:", day_list)
+print("day list:", day_list)
 
 #/Users/becca.elenzil/Documents/personal_projects/scrape_bus_data.py
 #/Users/becca.elenzil/GitHub/seattle-school-buses/scraping_bus_data/scrape_bus_data.py
