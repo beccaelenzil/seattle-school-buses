@@ -99,9 +99,10 @@ BusDataSet = list(zip(month_list,day_list,year_list,bus_number_list,school_list,
                       to_from_list, time_list, unit_list,today_list,today_time_list))
 
 dirname = os.path.dirname(__file__)
+filename_read = os.path.join(dirname, 'bus_data.pk1')
 filename = os.path.join(dirname, 'working_bus_data.pk1')
 
-df = pd.read_pickle(filename)
+df = pd.read_pickle(filename_read)
 
 df2 = pd.DataFrame(data = BusDataSet, columns=['Month', 'Day','Year',
                                               'Bus Number','School',

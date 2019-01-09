@@ -14,8 +14,7 @@ page = urllib.urlopen(late_busses)
 soup = BeautifulSoup(page, "html.parser")
 
 # get bus list and date from html
-t = soup.find_all('p')
-print(t)
+
 [a, bus_list, b] = soup.find_all('p')
 [a,date] = soup.find_all('h3')
 
@@ -47,6 +46,8 @@ bus_list = bus_list.strip('<p>')
 bus_list = bus_list.strip('</p>')
 bus_list = bus_list.strip('is running')
 bus_list_array = bus_list.split("<br/>")
+
+
 
 new_bus_array = []
 
@@ -90,7 +91,14 @@ for list_item in new_bus_array:
     if list_item[is_index+3] == 'minutes':
         time_list.append(int(list_item[is_index+2]))
     elif list_item[is_index+3] == 'hours' or list_item[is_index+3] == 'hour' :
-        time_list.append(60*int(list_item[is_index+2]))
+        if list_item[is_index+2] == 'two':
+            time_list.append(60*2)
+        elif list_item[is_index+2] == 'one':
+            time_list.append(60*1)
+        elif list_item[is_index+2].isdigit() == False:
+            time_list.append(NaN)
+        else:
+            time_list.append(60*int(list_item[is_index+2]))
 
     unit_list.append("minutes")
     month_list.append(the_month)
