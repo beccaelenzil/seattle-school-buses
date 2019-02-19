@@ -15,8 +15,9 @@ soup = BeautifulSoup(page, "html.parser")
 
 # get bus list and date from html
 
-[a, bus_list, b] = soup.find_all('p')
-[a,date] = soup.find_all('h3')
+[bus_list,a] = soup.find_all('p')
+[date, a] = soup.find_all('h3')
+
 
 # parse date into month, day, year
 date = str(date)
@@ -26,6 +27,8 @@ date = date.strip(',')
 date = date.split(" ")
 months = ['January','February','March','April','May','June',
           'July','August','September','October','November','December']
+
+
 
 i = 0
 while date[i] not in months:
@@ -55,19 +58,19 @@ for string in bus_list_array:
     string = string.split(' ')
     new_bus_array.append(string)
 
-bus_number_list = []
-school_list = []
-to_from_list = []
-time_list = []
-unit_list = []
-month_list = []
-day_list = []
-year_list = []
-today_month = []
-today_day = []
-today_year = []
-today_hour = []
-today_minute = []
+bus_number_list = [0]
+school_list = [0]
+to_from_list = [0]
+time_list = [0]
+unit_list = [0]
+month_list = [0]
+day_list = [0]
+year_list = [0]
+today_month = [0]
+today_day = [0]
+today_year = [0]
+today_hour = [0]
+today_minute = [0]
 
 print(new_bus_array)
 
@@ -128,8 +131,11 @@ df2 = pd.DataFrame(data = BusDataSet, columns=['Month', 'Day','Year',
                                               'Bus Number','School',
                                                 'To/From','Time','Unit','Data Taken Month','Data Taken Day',
                                                'Data Taken Year','Data Taken Hour','Data Taken Minute'])
-if df['Day'][num_rows-1] == df2['Day'][0] and df['Data Taken Hour'][num_rows-1] >= 15:
+if df['Day'][num_rows-1] == df2['Day'][1] and df['Data Taken Hour'][num_rows-1] >= 15:
     print("old data")
+    df3 = df.append(df2.iloc[0],ignore_index=True)
+    df3.to_pickle(filename)
+    df3.to_csv(filename_csv)
 else:
     df3 = df.append(df2,ignore_index=True)
     df3.to_pickle(filename)
