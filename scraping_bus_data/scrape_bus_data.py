@@ -28,8 +28,6 @@ date = date.split(" ")
 months = ['January','February','March','April','May','June',
           'July','August','September','October','November','December']
 
-
-
 i = 0
 while date[i] not in months:
     i = i+1
@@ -50,14 +48,13 @@ bus_list = bus_list.strip('</p>')
 bus_list = bus_list.strip('is running')
 bus_list_array = bus_list.split("<br/>")
 
-
-
 new_bus_array = []
 
 for string in bus_list_array:
     string = string.split(' ')
     new_bus_array.append(string)
 
+#initialize arrays for late bus data
 bus_number_list = [0]
 school_list = [0]
 to_from_list = [0]
@@ -66,15 +63,11 @@ unit_list = [0]
 month_list = [0]
 day_list = [0]
 year_list = [0]
-today_month = [0]
-today_day = [0]
-today_year = [0]
-today_hour = [0]
-today_minute = [0]
+
 
 print(new_bus_array)
 
-
+# put bus data in arrays
 for list_item in new_bus_array:
     bus_number_list.append(int(list_item[1]))
     to_from_list.append(list_item[2])
