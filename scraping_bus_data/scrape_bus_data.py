@@ -63,6 +63,11 @@ unit_list = [0]
 month_list = [0]
 day_list = [0]
 year_list = [0]
+today_month = [0]
+today_day = [0]
+today_year = [0]
+today_hour = [0]
+today_minute = [0]
 
 
 print(new_bus_array)
