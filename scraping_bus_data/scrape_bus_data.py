@@ -15,8 +15,12 @@ soup = BeautifulSoup(page, "html.parser")
 
 # get bus list and date from html
 
+
+
 [bus_list,a] = soup.find_all('p')
 [date, a] = soup.find_all('h3')
+
+print(bus_list)
 
 
 # parse date into month, day, year
@@ -129,17 +133,17 @@ df2 = pd.DataFrame(data = BusDataSet, columns=['Month', 'Day','Year',
                                               'Bus Number','School',
                                                 'To/From','Time','Unit','Data Taken Month','Data Taken Day',
                                                'Data Taken Year','Data Taken Hour','Data Taken Minute'])
-if df['Day'][num_rows-1] == df2['Day'][1] and df['Data Taken Hour'][num_rows-1] >= 15:
-    print("old data")
-    df3 = df.append(df2.iloc[0],ignore_index=True)
-    df3.to_pickle(filename)
-    df3.to_csv(filename_csv)
-else:
-    df3 = df.append(df2,ignore_index=True)
-    df3.to_pickle(filename)
-    df3.to_csv(filename_csv)
+#if df['Day'][num_rows-1] == df2['Day'][1] and df['Data Taken Hour'][num_rows-1] >= 15:
+#    print("old data")
+#    df3 = df.append(df2.iloc[0],ignore_index=True)
+#    df3.to_pickle(filename)
+#    df3.to_csv(filename_csv)
+#else:
+#    df3 = df.append(df2,ignore_index=True)
+#    df3.to_pickle(filename)
+#    df3.to_csv(filename_csv)
 
-print("day list:", day_list)
+#print("day list:", day_list)
 
 #/Users/becca.elenzil/Documents/personal_projects/scrape_bus_data.py
 #/Users/becca.elenzil/GitHub/seattle-school-buses/scraping_bus_data/scrape_bus_data.py
