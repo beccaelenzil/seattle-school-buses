@@ -5,6 +5,7 @@ import urllib.request as urllib
 import pandas as pd
 import os
 import datetime
+import re
 
 now = datetime.datetime.now()
  
@@ -17,20 +18,34 @@ soup = BeautifulSoup(page, "html.parser")
 
 
 
-[bus_list,a] = soup.find_all('p')
-[date, a] = soup.find_all('h3')
+paragraphs = soup.find_all('p')
+
+bus_pattern = re.compile("Route")
+date_pattern = re.compile(", 20")
+
+bus_list = []
+
+for paragraph in paragraphs:
+    if bus_pattern.search(str(paragraph)):
+        bus_list.append(paragraph.get_text())
+    if date_pattern.search(str(paragraph)):
+        date = paragraph.get_text()
+
 
 print(bus_list)
 
-
 # parse date into month, day, year
-date = str(date)
-
-date = date.strip('</h3>')
 date = date.strip(',')
+print(date)
 date = date.split(" ")
+
+print(date)
+
+
 months = ['January','February','March','April','May','June',
           'July','August','September','October','November','December']
+
+
 
 i = 0
 while date[i] not in months:
@@ -45,18 +60,6 @@ if the_day[0:2].isdigit() == True:
 else:
     the_day = the_day[0]
 
-# parse bus list
-bus_list = str(bus_list)
-bus_list = bus_list.strip('<p>')
-bus_list = bus_list.strip('</p>')
-bus_list = bus_list.strip('is running')
-bus_list_array = bus_list.split("<br/>")
-
-new_bus_array = []
-
-for string in bus_list_array:
-    string = string.split(' ')
-    new_bus_array.append(string)
 
 #initialize arrays for late bus data
 bus_number_list = [0]
@@ -133,6 +136,7 @@ df2 = pd.DataFrame(data = BusDataSet, columns=['Month', 'Day','Year',
                                               'Bus Number','School',
                                                 'To/From','Time','Unit','Data Taken Month','Data Taken Day',
                                                'Data Taken Year','Data Taken Hour','Data Taken Minute'])
+print(df2)                                           
 #if df['Day'][num_rows-1] == df2['Day'][1] and df['Data Taken Hour'][num_rows-1] >= 15:
 #    print("old data")
 #    df3 = df.append(df2.iloc[0],ignore_index=True)

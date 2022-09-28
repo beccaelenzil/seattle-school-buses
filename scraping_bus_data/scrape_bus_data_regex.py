@@ -6,6 +6,8 @@ import os
 #import numpy as np
 import pandas as pd
 from datascience import *
+import datetime
+
 now = datetime.datetime.now()
 
 # scrape from web
@@ -13,22 +15,25 @@ late_busses = 'https://www.seattleschools.org/departments/transportation/latebus
 page = urllib.urlopen(late_busses)
 soup = BeautifulSoup(page, "html.parser")
 
-# find the list of late buses using regex
-running_late_bus_pattern = re.compile("Route (\d+) ([A-Za-z]+) ([A-Za-z]+) is running (\d+) ([A-Za-z]+) late")
 
-paragraphs = []
-for paragraph in soup.find_all('p'):
-    paragraph = str(paragraph)
-    if running_late_bus_pattern.search(paragraph):
-        bus_list = paragraph
+# find the list of late buses using regex
+running_late_bus_pattern = re.compile("Route (\d+) - ([A-Za-z]+) ([A-Za-z]+) - (\d+) ([A-Za-z]+)")
 
 # find today's date using regex
 date_text_pattern = re.compile("([A-Z][a-z]+) (\d+)[a-z]+, (\d\d\d\d)")
 
-for header in soup.find_all('h3'):
-    header = str(header)
-    if date_text_pattern.search(header):
-        date_text = header
+paragraphs = []
+for paragraph in soup.find_all('p'):
+    paragraph = str(paragraph)
+    print(paragraph)
+    if running_late_bus_pattern.search(paragraph):
+        print(paragraph)
+        bus_list = paragraphs
+    
+    if date_text_pattern.search(paragraph):
+        date_text = paragraph
+        print(date_text)
+        
 
 # get today's date from match object
 date_match = date_text_pattern.search(date_text)
@@ -90,10 +95,10 @@ df2 = pd.DataFrame(data = BusDataSet, columns=['Bus Date [M,D,Y]',
                                               'To/From','Time','Unit','Collect Date', 'Collect Time'])
 #update old df
 
-df3 = df.append(df2,ignore_index=True)
+#df3 = df.append(df2,ignore_index=True)
 
 # write new df to pickle
-df3.to_pickle(filename)
+#df3.to_pickle(filename)
 
 # show the new data
 print(df2)
